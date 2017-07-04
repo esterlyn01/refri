@@ -2,6 +2,7 @@ package datos.trabajo;
 
 public class Servicios {
 
+	private int idservicios;
 	private String tipo;
 	private String descripcion;
 	
@@ -23,6 +24,14 @@ public class Servicios {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public int getIdservicios() {
+		return idservicios;
+	}
+
+	public void setIdservicios(int idservicios) {
+		this.idservicios = idservicios;
 	}
 
 	

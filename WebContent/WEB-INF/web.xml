@@ -156,4 +156,12 @@
     <servlet-name>PetiBuscarEquipos</servlet-name>
     <url-pattern>/PetiBuscarEquipos/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiNewCrearServicios</servlet-name>
+    <servlet-class>datos.peticion.PetiNewCrearServicios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiNewCrearServicios</servlet-name>
+    <url-pattern>/PetiNewCrearServicios/*</url-pattern>
+  </servlet-mapping>
 </web-app>

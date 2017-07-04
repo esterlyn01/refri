@@ -604,6 +604,38 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 
        }
        
+       function vCrearServicios(){
+			//var name = $('#userName').val();
+//			$.get('PetiRol', {
+//				userName : "coco"
+//			}, function(responseText) {
+//			//	$('#ajaxResponse').text(responseText);
+//			});
+		
+    	   var idUsuario =$( "#usuLista option:selected" ).val();
+    	   var idServicio=$( "#listaServicios option:selected" ).val();
+		      console.log("datos");
+		      
+		    	$.ajax({
+				type: "POST",
+				url: 'PetiNewCrearServicios',
+				data:{idUsuarioo : idUsuario, idServicioo : idServicio} ,
+				beforeSend: function(){
+		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+					},
+				success: function(datos){
+				//	$('#ajaxResponse').text(datos);
+		           	console.log(datos);
+		           	alert(datos +" del servicio");
+		            },
+				error: function(){
+				//	$("#conte").html("Pailas esto no es Facil");
+					},
+			});		
+				  
+
+  }
+       
        function vGrup(){
 		
 		      console.log("datos");
