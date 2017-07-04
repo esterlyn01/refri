@@ -1,0 +1,36 @@
+hr{
+  border-bottom-color:rgba(36, 0, 0, 0.9) !important;
+}
+
+.tam{
+  width: auto;
+  height: auto;
+}
+
+.color{
+  margin-top: 3%;
+  margin-left: 1%;
+   background-color: rgba(255, 245, 245, 1.0) ;
+}
+
+#noticias>h3{
+      text-align: center;
+}
+
+img{
+}
+
+.bs-example {
+margin-right: 0;
+margin-left: 0;
+background-color: #fff;
+border-color: #ddd;
+border-width: 1px;
+border-radius: 1% 1% 1% 0;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.centert{
+	 margin: auto;
+}

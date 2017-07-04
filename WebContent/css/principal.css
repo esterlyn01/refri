@@ -1,0 +1,40 @@
+  body{
+  /*background-color: rgba(38, 125, 186, 0.1);   */
+    background: url(../im/a.jpg) no-repeat fixed center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#cabecera, #pies2{
+width: 100%;
+padding: 1% 0% 1% 0%;
+background:  rgba(10, 0, 0, 0.9);
+background:  rgba(10, 0, 0, 0.9);
+color: #FFF5F5;
+text-align: center;
+}
+
+#menu{
+ background: rgba(255, 255, 255, 0.9);
+ padding: 1% 0% 1% 0%;
+ margin-top: 0.5%;
+}
+
+#contenido{
+
+}
+
+#concentro{
+ background: rgba(255, 255, 255, 0.9);
+ padding: 3%;
+}
+
+#pies2{
+width: 100%;
+padding: 1% 0% 1% 0%;
+background:  rgba(10, 0, 0, 0.9);
+color: #FFF5F5;
+text-align: center;
+}

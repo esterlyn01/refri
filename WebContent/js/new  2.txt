@@ -1,0 +1,58 @@
+ function datosIniciales2(url2, destino, val){
+    	   
+      	 //*****************************Lista inicial estudiantes******************************    	   
+      	   
+      	   $.ajax({
+        			type: "POST",
+        			url: ''+url2,
+        			async:false,
+        			data:{vall : val} ,
+        			beforeSend: function(){
+        		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+        				},
+        			success: function(datos){
+        				var autocompletarr = new Array();
+        		     	var temp = new Array();
+        				temp = datos.split(",");
+        				
+        				for (a in temp ) {
+        					console.log(temp[a]);
+        					autocompletarr.push(""+temp[a]);
+        					}
+        		        $(""+destino).autocomplete({source: temp });
+        		       // $("#prograUsuario").autocomplete({source: autocompletarr });
+        		        },
+        			error: function(){
+        			//	$("#conte").html("Pailas esto no es Facil");
+        				},
+        		});	
+      	   
+         } 
+		 
+		 
+		 =================================================
+		 		try {
+			//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
+			String lista="";
+			String c ="";
+			while (rs.next()) {
+			  //Obtenemos los valores de la consulta y creamos
+			  //nuestro objeto producto
+				System.out.println("PRograma:: "+rs.getString("programa"));
+				//lista+="<option value='"+rs.getInt("idprogramaUsuario")+"'>"+rs.getString("codigo")+"</option>";
+				c+=""+rs.getString("programa")+"";
+				c+=",";
+//	      s.setDane(rs.getInt("idprogramaUsuario"));
+//	      s.setSede(rs.getString("Sede"));
+//	      s.setDireccion(rs.getString("Direccion"));
+//	      s.setEmail(rs.getString("Email"));
+//	      s.setTelefono(rs.getString("Telefono"));
+	  }
+			lista+=""+c;
+			//lista+="</select>";
+			response.setContentType("text/plain");
+			response.getWriter().write(lista);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}

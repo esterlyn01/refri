@@ -1,0 +1,26 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css");
+@import url("general.css");
+@import url("principal.css");
+
+#poper {
+          display: block;
+          height: 30%;
+          max-width: 100%;
+   }
+
+   div{
+     padding-top: 1%;
+   }
+
+   .boto{
+     margin-top: 1%;
+   }
+
+    .produc{
+     background-color: rgba(168, 210, 163, 0.5) !important;
+     margin-top: 2% !important;
+     margin-top: 2% !important;
+    }
+
+
+
