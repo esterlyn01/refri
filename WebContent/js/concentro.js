@@ -545,6 +545,9 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
   	     x=$("#cCrearServicios");
   	     x.click(vCrearServicios);
   	     //fin crear servicios
+  	     //asignarEquipo
+  	     
+  	     //finAsignarEquipo
   	     
 
 
@@ -967,10 +970,10 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
     	        var nombre = $(this).attr("name");
     	        console.log(nombre);
     	         
-    	        var datos=$("#"+nombre).val();
+    	        var datos=$("#rol"+nombre).val();
     	        
     	        console.log("datos");
-  		      var rolDatoo=$("#rolDato").val();
+  		      var rolDatoo=$("#nombre").val();
   		    	$.ajax({
   				type: "POST",
   				url: 'PetiActualizarRol',

@@ -10,20 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datos.conexion.Procedimiento;
 import datos.programas.Rol;
-
+import datos.trabajo.Servicios;
+import datos.usuarios.Persona;
+import datos.usuarios.Usuarios;
 
 
 /**
  * Servlet implementation class PeriRol
  */
-@WebServlet("/PetiActualizarRol")
-public class PetiActualizarRol extends HttpServlet {
+@WebServlet("/PetiNewAsignaciondeEquipo")
+public class PetiNewAsignaciondeEquipo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetiActualizarRol() {
+    public PetiNewAsignaciondeEquipo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,21 +50,22 @@ public class PetiActualizarRol extends HttpServlet {
 
 	@SuppressWarnings("static-access")
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-	System.out.println("po");
+	System.out.println("p");
 	//datos del formulario
-	Rol r = new Rol();
-	r.setRol(request.getParameter("rolDatos"));
-	int iddd =Integer.parseInt(request.getParameter("idd"));
-	String dada = request.getParameter("rolDatos") ;
+	Persona pers =new Persona();
+	Servicios serv = new Servicios();
 	
+	pers.setIdd(Integer.parseInt(request.getParameter("idUsuarioo")));
+	serv.setIdservicios(Integer.parseInt(request.getParameter("idServicioo")));
+	System.out.println("usu"+pers.getIdd());
 	//fin datos del formulario
 	//conexion bd y procedimientos almacenados
 	Procedimiento proce = new Procedimiento();
-	proce.setCall("{CALL actualizarRol( ?, ?)}");
+	proce.setCall("{CALL inser_crearServicios(?, ?)}");
 	proce.conexion(0);
 	try {
-		proce.cl.setInt(1, iddd);
-		proce.cl.setString(2, dada);
+		proce.cl.setInt(1, pers.getIdd());
+		proce.cl.setInt(2, serv.getIdservicios());		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -81,7 +84,7 @@ public class PetiActualizarRol extends HttpServlet {
 		 response.getWriter().write("No se registraron los datos");
     }
 	
-	System.out.println(""+r.getRol());
+	System.out.println(""+pers.getIdd());
 	}
 	
 

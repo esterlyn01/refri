@@ -98,7 +98,7 @@ public class PetiBuscarRol extends HttpServlet {
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				
 						System.out.println("Rol: "+rs.getString("rol"));
-						lista+="<tr><td><input type='text' class='form-control asisFiltro' id='"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='cGrupos'>actualizar</button></td></tr>";
+						lista+="<tr><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='cGrupos'>actualizar</button></td></tr>";
 	//		      s.setDane(rs.getInt("idprogramaUsuario"));
 	//		      s.setSede(rs.getString("Sede"));
 	//		      s.setDireccion(rs.getString("Direccion"));
