@@ -10,7 +10,7 @@ $(document).ready(concentroo);
              +"<li role='presentation'><a href='#usuario' role='tab' data-toggle='tab' id='usuario2'>Usuario</a></li>"
              +"<li role='presentation'><a href='#servicios' role='tab' data-toggle='tab' id='servicios2'>Servicios</a></li>"
              +"<li role='presentation'><a href='#equipos' role='tab' data-toggle='tab' id='equipos2'>equipos</a></li>"
-             +"<li role='presentation'><a href='#crearServicio' role='tab' data-toggle='tab' id='crearServicios2'>Crear Sevicios</a></li>"
+             +"<li role='presentation'><a href='#crearServicio' role='tab' data-toggle='tab' id='crearServicios2'>Orden de servicio</a></li>"
              +"<li role='presentation'><a href='#asignarequipo' role='tab' data-toggle='tab' id='asignarequipo2'>asignar equipo</a></li>"
             +"</ul>"
            +"<!-- Tab panes -->"
@@ -330,7 +330,7 @@ var asignarequipo=  ""
       +"</div>"
        //campo
     +"<div class='row'>"
-        +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Pecion de servicios</label></div>"
+        +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Id orden de servicio</label></div>"
         +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5' id='asiPeticionDeServicios'>"
              //+"<input type='text' class='form-control' id='rolesRol' placeholder='colocar Nombre'>"
         +"</div>"
@@ -339,20 +339,20 @@ var asignarequipo=  ""
 		+"<div class='row'>"
 		    +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Fecha</label></div>"
 		    +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>"
-		    	   +"<input type='date' class='form-control' id='asifheca' placeholder='colocar fecha'>"
+		    	   +"<input type='date' class='form-control' id='creaAsigFecha' placeholder='colocar fecha'>"
 		    +"</div>"
 	    +"</div>"
 	   //campo
 		+"<div class='row monitor'>"
 		    +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Hora</label></div>"
 		    +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>"
-		    	   +"<input type='time' class='form-control' id='usuNombre' placeholder='colocar Nombre'>"
+		    	   +"<input type='time' class='form-control' id='creaAsigHora' placeholder='colocar Nombre'>"
 		    +"</div>"
 	    +"</div>"
 	  //Boton
 	    +"<div class='row'>"
 		    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-		       +"<button type='button' class='btn btn-primary' id='cProgramas'>agregar</button>"
+		       +"<button type='button' class='btn btn-primary' id='cAsignarEqui'>agregar</button>"
 		    +"</div>"
 	    +"</div>"
 +"</div>"
@@ -546,7 +546,8 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
   	     x.click(vCrearServicios);
   	     //fin crear servicios
   	     //asignarEquipo
-  	     
+  	     x=$("#cAsignarEqui");
+	     x.click(vAsignarEqui);
   	     //finAsignarEquipo
   	     
 
@@ -607,6 +608,41 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 
        }
        
+       function vAsignarEqui(){
+			//var name = $('#userName').val();
+//			$.get('PetiRol', {
+//				userName : "coco"
+//			}, function(responseText) {
+//			//	$('#ajaxResponse').text(responseText);
+//			});
+		
+    	   var idListaequipos =$( "#listaEquipos option:selected" ).val();
+    	   var idListaCreaServicios=$( "#listaCrearservicios option:selected" ).val();
+    	   var creaAsigFecha=$("#creaAsigFecha").val();
+    	   var creaAsigHora=$("#creaAsigHora").val();
+    	   
+    	   console.log("vAsignar Equipo");
+		      
+		    	$.ajax({
+				type: "POST",
+				url: 'PetiNewAsignaciondeEquipo',
+				data:{idListaequiposs : idListaequipos, idListaCreaServicioss : idListaCreaServicios, creaAsigFechaa : creaAsigFecha, creaAsigHoraa : creaAsigHora} ,
+				beforeSend: function(){
+		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+					},
+				success: function(datos){
+				//	$('#ajaxResponse').text(datos);
+		           	console.log(datos);
+		           	alert(datos +" del servicio");
+		            },
+				error: function(){
+				//	$("#conte").html("Pailas esto no es Facil");
+					},
+			});		
+				  
+
+  }
+  
        function vCrearServicios(){
 			//var name = $('#userName').val();
 //			$.get('PetiRol', {
@@ -615,8 +651,8 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 //			//	$('#ajaxResponse').text(responseText);
 //			});
 		
-    	   var idUsuario =$( "#usuLista option:selected" ).val();
-    	   var idServicio=$( "#listaServicios option:selected" ).val();
+   	   var idUsuario =$( "#usuLista option:selected" ).val();
+   	   var idServicio=$( "#listaServicios option:selected" ).val();
 		      console.log("datos");
 		      
 		    	$.ajax({
@@ -637,7 +673,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 			});		
 				  
 
-  }
+ }
        
        function vGrup(){
 		

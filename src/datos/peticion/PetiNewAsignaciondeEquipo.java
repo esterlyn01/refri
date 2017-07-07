@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datos.conexion.Procedimiento;
 import datos.programas.Rol;
+import datos.trabajo.AsignarServicios;
 import datos.trabajo.Servicios;
 import datos.usuarios.Persona;
 import datos.usuarios.Usuarios;
@@ -52,20 +53,31 @@ public class PetiNewAsignaciondeEquipo extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	System.out.println("p");
 	//datos del formulario
-	Persona pers =new Persona();
-	Servicios serv = new Servicios();
+	AsignarServicios asiSer  = new AsignarServicios();
+	int idequipo = 0, idservicios = 0;
+	try {
+		System.out.println(request.getParameter("idListaequiposs"));
+		idequipo= Integer.parseInt(request.getParameter("idListaequiposs"));
+		idservicios=Integer.parseInt(request.getParameter("idListaCreaServicioss"));
+	} catch (NumberFormatException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	asiSer.setFecha(request.getParameter("creaAsigFechaa"));
+	asiSer.setHora(request.getParameter("creaAsigHoraa"));
 	
-	pers.setIdd(Integer.parseInt(request.getParameter("idUsuarioo")));
-	serv.setIdservicios(Integer.parseInt(request.getParameter("idServicioo")));
-	System.out.println("usu"+pers.getIdd());
+	System.out.println("creacion de la asignacion hora: "+asiSer.getHora());
 	//fin datos del formulario
 	//conexion bd y procedimientos almacenados
 	Procedimiento proce = new Procedimiento();
-	proce.setCall("{CALL inser_crearServicios(?, ?)}");
+	proce.setCall("{CALL insert_asignacionServ( ?, ?, ?, ?)}");
 	proce.conexion(0);
 	try {
-		proce.cl.setInt(1, pers.getIdd());
-		proce.cl.setInt(2, serv.getIdservicios());		
+		proce.cl.setInt(1, idequipo);
+		proce.cl.setString(2, asiSer.getFecha());
+		proce.cl.setString(3, asiSer.getHora());
+		proce.cl.setInt(4, idservicios);	
+			
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -84,7 +96,7 @@ public class PetiNewAsignaciondeEquipo extends HttpServlet {
 		 response.getWriter().write("No se registraron los datos");
     }
 	
-	System.out.println(""+pers.getIdd());
+	System.out.println(""+asiSer.getServicios()+" fin");
 	}
 	
 

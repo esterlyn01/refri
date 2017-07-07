@@ -118,7 +118,7 @@ public class PetiBuscarEquipos extends HttpServlet {
 				try {
 					//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 							 			
-					String lista="<select class='form-control usuEstra' id='listaPlacas'>";
+					String lista="<select class='form-control usuEstra' id='listaEquipos'>";
 					while (rs.next()) {
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				

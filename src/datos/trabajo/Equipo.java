@@ -2,6 +2,7 @@ package datos.trabajo;
 
 
 public class Equipo {
+	private int idEquipo;
 	private java.lang.String placa;
 	private java.lang.String tipoAire;
 	private int btu;
@@ -86,6 +87,14 @@ public class Equipo {
 
 	public void setRefrigerante(java.lang.String string) {
 		this.refrigerante = string;
+	}
+
+	public int getIdEquipo() {
+		return idEquipo;
+	}
+
+	public void setIdEquipo(int idEquipo) {
+		this.idEquipo = idEquipo;
 	}
 	
 	
