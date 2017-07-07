@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 import datos.conexion.Procedimiento;
 
 
@@ -93,12 +96,23 @@ public class PetiBuscarRol extends HttpServlet {
 				try {
 					//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 							 			
-					String lista="<table class='table table-condensed'><tr><th>Rol</th></tr>";
+					String lista="<table class='table table-bordered'><tr><th>Rol</th><th>Eventos</th></tr>";
+					int color=1,cont=1;
+					String[] colorr=new String[3];
+					colorr[1]="active";
+					colorr[2]="success";
+					
 					while (rs.next()) {
+						if(cont%2==0){
+							color=1;
+						}else{
+							color=2;
+						}
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				
 						System.out.println("Rol: "+rs.getString("rol"));
-						lista+="<tr><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='cGrupos'>actualizar</button></td></tr>";
+						lista+="<tr class='"+colorr[color]+"'><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='actualizarRol'>actualizar</button></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUIII btn btn-primary' id='eliminarRol'>Eliminar</button></td></tr>";
+						cont++;
 	//		      s.setDane(rs.getInt("idprogramaUsuario"));
 	//		      s.setSede(rs.getString("Sede"));
 	//		      s.setDireccion(rs.getString("Direccion"));

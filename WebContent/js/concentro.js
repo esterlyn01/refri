@@ -42,16 +42,23 @@ $(document).ready(concentroo);
 	                   +"<div class='col-xs-"+xs2+" col-sm-"+sm2+" col-md-"+md2+" col-lg-"+lg2+"'>"
 	                   	   +"<input type='text' class='form-control' id='rolDato' placeholder='colocar Roles'>"
 	                   +"</div>"
-	                   +"<div class='col-xs-"+xs3+" col-sm-"+sm3+" col-md-"+md3+" col-lg-"+lg3+"'>"
-	                      +"<button type='button' class='btn btn-primary' id='crol'>Crear</button>"
-	                   +"</div>"
-	                   +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-	                      +"<button type='button' class='btn btn-primary' id='trol'>Ver Tabla</button>"
-	                   +"</div>"
                    +"</div>"
-                   +"<div class='row>"
-                   			+"<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' id='rol3'></div>"
-                   	+"</div>";
+                   //botones
+                   +"<div class='row'>"
+                   		+"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'></div>"
+	                    +"<div class='col-xs-2 col-sm-2 col-md-1 col-lg-1'>"
+	                   		+"<button type='button' class='btn btn-primary' id='crol'>Crear</button>"
+	                   +"</div>"
+	                   //+"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'></div>"
+	                   +"<div class='col-xs-2 col-sm-2 col-md-1 col-lg-1'>"
+	                   		+"<button type='button' class='btn btn-primary' id='trol'>cargar Tabla</button>"
+	                   	+"</div>"
+	                   	//+"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'></div>"
+	                   	+"<div class='col-xs-2 col-sm-2 col-md-1 col-lg-1'>"
+	                   		+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+	                   	+"</div>"
+                 +"</div>";
+                 
 
        $("#rol").append(rol);
 
@@ -164,6 +171,9 @@ var usuario=""
           +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
              +"<button type='button' class='btn btn-primary' id='tUsu'>Ver Tabla</button>"
           +"</div>"
+          +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+          +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+          +"</div>"
         +"</div>"
   +"</div>"
 +"</div>"
@@ -195,6 +205,9 @@ var servicios=  "<div class='row bs-example'>"
     +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
        +"<button type='button' class='btn btn-primary' id='cServicios'>agregar</button>"
     +"</div>"
+    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+    	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+  +"</div>"
 +"</div>";
 
 $("#servicios").append(servicios);
@@ -282,6 +295,9 @@ var equipos=""
 	    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
 	       +"<button type='button' class='btn btn-primary' id='cAsis'>agregar</button>"
 	    +"</div>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+        	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+      +"</div>"
     +"</div>"
 +"</div>";
 
@@ -311,6 +327,9 @@ var crearServicios=  ""
            +"<button type='button' class='btn btn-primary' id='cCrearServicios'>agregar</button>"
         +"</div>"
       +"</div>"
+      +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+      	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+    +"</div>"
 +"</div>"
 +"</div>";
 
@@ -355,6 +374,9 @@ var asignarequipo=  ""
 		       +"<button type='button' class='btn btn-primary' id='cAsignarEqui'>agregar</button>"
 		    +"</div>"
 	    +"</div>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+        	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+      +"</div>"
 +"</div>"
 +"</div>";
 
@@ -942,7 +964,10 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
         				console.log(datos);
         		       // $(""+destino).append(datos);
         				//$("#rol3").append(datos);
-        				$("#rol3").html(datos);
+        				//$("#rol3").html(datos);
+        				$("#contenidoModalTem").html(datos);
+        				//$('.modalTemp').focus();
+        				$('.modalTemp').modal('show');
         		        
         		        },
         			error: function(){
@@ -1002,7 +1027,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
      //*****************************FIN EVENTOS DE MAS******************************
        
        $(document).ready(function() {   
-    	    $("#concentro").on('click', '.AQUI', function() {
+    	    $("#concentro").on('click', '.AQUIII', function() {
     	        var nombre = $(this).attr("name");
     	        console.log(nombre);
     	         

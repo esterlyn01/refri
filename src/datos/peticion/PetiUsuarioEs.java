@@ -50,11 +50,16 @@ public class PetiUsuarioEs extends HttpServlet {
 	System.out.println("po");
 	//datos del formulario
 	Persona ess = new Persona();
-	ess.setDocumento(Double.parseDouble(request.getParameter("usuDocumen")));
-	ess.setNombres(request.getParameter("usuNombre"));
-	ess.setTelefono(request.getParameter("usuTelefono"));
-	ess.setPassword(request.getParameter("passc"));
-	ess.setIdd(Integer.parseInt(request.getParameter("rroll")));
+	try {
+		ess.setDocumento(Double.parseDouble(request.getParameter("usuDocumen")));
+		ess.setNombres(request.getParameter("usuNombre"));
+		ess.setTelefono(request.getParameter("usuTelefono"));
+		ess.setPassword(request.getParameter("passc"));
+		ess.setIdd(Integer.parseInt(request.getParameter("rroll")));
+	} catch (NumberFormatException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
 	
 	
 	

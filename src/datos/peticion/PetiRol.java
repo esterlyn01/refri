@@ -48,6 +48,7 @@ public class PetiRol extends HttpServlet {
 	@SuppressWarnings("static-access")
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	System.out.println("po");
+	boolean mensaje=false;
 	//datos del formulario
 	Rol r = new Rol();
 	r.setRol(request.getParameter("rolDatos"));
@@ -58,9 +59,11 @@ public class PetiRol extends HttpServlet {
 	proce.conexion(0);
 	try {
 		proce.cl.setString(1, r.getRol());
+		mensaje=true;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		mensaje=false;
 	}
 	boolean rpta =proce.cierreInsert();
 	

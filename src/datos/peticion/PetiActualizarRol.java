@@ -73,12 +73,12 @@ public class PetiActualizarRol extends HttpServlet {
         //Si inserto lo redireccionamos a otra pagina que se llama "mensaje.jsp"
         //response.sendRedirect("mensaje.jsp?men=Se registro  de manera correcta");
    	 response.setContentType("text/plain");
-   		response.getWriter().write("Se registro  de manera correcta");
+   		response.getWriter().write("Se Actualizaron  de manera correcta");
     } else {
         //Si no se inserto lo redireccionamos a otra pagina que se llama "mensaje.jsp"
         //response.sendRedirect("mensaje.jsp?men=No se registraron los datos");
    	 response.setContentType("text/plain");
-		 response.getWriter().write("No se registraron los datos");
+		 response.getWriter().write("No se actualizaron los datos");
     }
 	
 	System.out.println(""+r.getRol());

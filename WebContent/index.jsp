@@ -34,6 +34,21 @@
     </footer>
     </div>
     </div>
+    
+    <!-- modal de eventos -->
+    <div class="modal fade modalTemp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content row" id="contenidoModal">
+	     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+	     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 table-responsive" id="contenidoModalTem">
+	     	  ...
+	     </div>
+	     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+    </div>
+  </div>
+</div>
+    
+    <!-- fin modal de eventos -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
      <script src="js/bootstrap.min.js"></script>
      <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
