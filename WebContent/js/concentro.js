@@ -1030,29 +1030,59 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
        
        $(document).ready(function() {   
     	    $("#contenidoModal").on('click', '.buscarup', function() {
-    	        var nombre = $(this).attr("name");
-    	        console.log(nombre);
-    	         
-    	        var datos=$("#rol"+nombre).val();
+    	        var id = $(this).attr("name");
+    	        var evento = $(this).attr("id");
+    	        console.log("nombre: "+id);
     	        
-    	        console.log("datos");
-  		      var rolDatoo=$("#nombre").val();
-  		    	$.ajax({
-  				type: "POST",
-  				url: 'PetiActualizarRol',
-  				data:{rolDatos : datos, idd : nombre} ,
-  				beforeSend: function(){
-  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
-  					},
-  				success: function(datos){
-  				//	$('#ajaxResponse').text(datos);
-  		           	console.log(datos);
-  		           	alert(datos +" de "+rolDatoo);
-  		            },
-  				error: function(){
-  				//	$("#conte").html("Pailas esto no es Facil");
-  					},
-  			});
+    	        switch(evento) {
+    	        case "actualizarRol":
+			    	        	 var datos=$("#rol"+id).val();
+			    	    	        
+			    	    	        console.log("datos");
+			    	  		      var rolDatoo=$("#nombre").val();
+			    	  		    	$.ajax({
+			    	  				type: "POST",
+			    	  				url: 'PetiActualizarRol',
+			    	  				data:{rolDatos : datos, idd : id, actividad : "actualizar"} ,
+			    	  				beforeSend: function(){
+			    	  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+			    	  					},
+			    	  				success: function(datos){
+			    	  				//	$('#ajaxResponse').text(datos);
+			    	  		           	console.log(datos);
+			    	  		           	alert(datos +" de "+rolDatoo);
+			    	  		            },
+			    	  				error: function(){
+			    	  				//	$("#conte").html("Pailas esto no es Facil");
+			    	  					},
+			    	  			});
+    	            break;
+    	        case "eliminarRol":
+			    	        var datos=$("#rol"+id).val();
+				    	        
+				    	        console.log("datos");
+				  		      var rolDatoo=$("#nombre").val();
+				  		    	$.ajax({
+				  				type: "POST",
+				  				url: 'PetiActualizarRol',
+				  				data:{idd : id, actividad : "eliminar"} ,
+				  				beforeSend: function(){
+				  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+				  					},
+				  				success: function(datos){
+				  				//	$('#ajaxResponse').text(datos);
+				  		           	console.log(datos);
+				  		           	alert(datos +" de "+rolDatoo);
+				  		            },
+				  				error: function(){
+				  				//	$("#conte").html("Pailas esto no es Facil");
+				  					},
+				  			});
+    	            break;
+    	        default:
+    	            //code block
+    	    }
+    	       
     	        
     	    });
     	   
