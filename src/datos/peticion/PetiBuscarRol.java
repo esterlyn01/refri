@@ -111,7 +111,7 @@ public class PetiBuscarRol extends HttpServlet {
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				
 						System.out.println("Rol: "+rs.getString("rol"));
-						lista+="<tr class='"+colorr[color]+"'><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='actualizarRol'>actualizar</button></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUIII btn btn-primary' id='eliminarRol'>Eliminar</button></td></tr>";
+						lista+="<tr class='"+colorr[color]+"'><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='buscarup btn btn-primary' id='actualizarRol'>actualizar</button></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='buscarup btn btn-primary' id='eliminarRol'>Eliminar</button></td></tr>";
 						cont++;
 	//		      s.setDane(rs.getInt("idprogramaUsuario"));
 	//		      s.setSede(rs.getString("Sede"));

@@ -545,7 +545,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
     	   var x=$("#crol");
     	   x.click(vrol);
     	  
-    	   x=$("#trol");
+    	   x=$("#trol");    	   
     	   x.click(taabl);
     	   //fin ROL
     	   //usuario
@@ -975,6 +975,8 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
         				},
         		});	
       	   
+      	 eventoElimiUpdate();
+      	   
          } 
        
        function tpro(){
@@ -1027,7 +1029,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
      //*****************************FIN EVENTOS DE MAS******************************
        
        $(document).ready(function() {   
-    	    $("#concentro").on('click', '.AQUIII', function() {
+    	    $("#contenidoModal").on('click', '.buscarup', function() {
     	        var nombre = $(this).attr("name");
     	        console.log(nombre);
     	         
