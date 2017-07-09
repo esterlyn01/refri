@@ -39,11 +39,11 @@
     <div class="modal fade modalTemp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content row" id="contenidoModal">
-	     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
-	     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 table-responsive" id="contenidoModalTem">
+	     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id=""></div>
+	     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-8 table-responsive" id="contenidoModalTem">
 	     	  ...
 	     </div>
-	     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+	     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id=""></div>
     </div>
   </div>
 </div>

@@ -169,7 +169,7 @@ var usuario=""
              +"<button type='button' class='btn btn-primary' id='cUsu'>agregar</button>"
           +"</div>"
           +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-             +"<button type='button' class='btn btn-primary' id='tUsu'>Ver Tabla</button>"
+             +"<button type='button' class='btn btn-primary' id='tUsu'>cargar Tabla</button>"
           +"</div>"
           +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
           +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
@@ -1017,7 +1017,10 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
          				console.log(datos);
          		       // $(""+destino).append(datos);
          				//$("#rol3").append(datos);
-         				$("#usu3").html(datos);
+         				$("#contenidoModalTem").html(datos);
+        				//$('.modalTemp').focus();
+        				$('.modalTemp').modal('show');
+         				//$("#usu3").html(datos);
          		        
          		        },
          			error: function(){
@@ -1079,6 +1082,51 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 				  					},
 				  			});
     	            break;
+		    	    case "actualizarUsuario":
+		   	          var roll =$("#rolesRol2"+id+" option:selected" ).val();
+		  		      var document=$("#documento"+id).val();
+		  		      var nombre=$("#nombre"+id).val();
+		  		      var tel=$("#telefono"+id).val();
+		  		      //var passs=$("#usuPass").val();
+		   	    	        
+		   	    	        console.log("datos");
+		   	  		      var rolDatoo=$("#nombre").val();
+		   	  		    	$.ajax({
+		   	  				type: "POST",
+		   	  				url: 'PetiActualizarUsuarios',
+		   	  			    data:{idd : id, rroll : roll, usuDocumen : document, usuNombre : nombre, usuTelefono : tel, actividad : "actualizar"} ,
+						//	data:{rolDatos : datos, idd : id, actividad : "actualizar"} ,
+		   	  				beforeSend: function(){
+		   	  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+		   	  					},
+		   	  				success: function(datos){
+		   	  				//	$('#ajaxResponse').text(datos);
+		   	  		           	console.log(datos);
+		   	  		           	alert(datos +" de "+rolDatoo);
+		   	  		            },
+		   	  				error: function(){
+		   	  				//	$("#conte").html("Pailas esto no es Facil");
+		   	  					},
+		   	  			});
+		   	  		  break;
+		    	      case "eliminarUsuario":
+		    	          $.ajax({
+			  				type: "POST",
+			  				url: 'PetiActualizarUsuarios',
+			  				data:{idd : id, actividad : "eliminar"} ,
+			  				beforeSend: function(){
+			  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+			  					},
+			  				success: function(datos){
+			  				//	$('#ajaxResponse').text(datos);
+			  		           	console.log(datos);
+			  		           	alert(datos +" de "+rolDatoo);
+			  		            },
+			  				error: function(){
+			  				//	$("#conte").html("Pailas esto no es Facil");
+			  					},
+			  			});
+	            break;
     	        default:
     	            //code block
     	    }

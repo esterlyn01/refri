@@ -172,4 +172,45 @@
     <servlet-name>PetiNewAsignaciondeEquipo</servlet-name>
     <url-pattern>/PetiNewAsignaciondeEquipo/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiActualizarAsignarEquipo</servlet-name>
+    <servlet-class>datos.peticion.PetiActualizarAsignarEquipo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiActualizarAsignarEquipo</servlet-name>
+    <url-pattern>/PetiActualizarAsignarEquipo/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiActualizarEquipos</servlet-name>
+    <servlet-class>datos.peticion.PetiActualizarEquipos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiActualizarEquipos</servlet-name>
+    <url-pattern>/PetiActualizarEquipos/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiActualizarOrdenDeServicio</servlet-name>
+    <servlet-class>datos.peticion.PetiActualizarOrdenDeServicio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiActualizarOrdenDeServicio</servlet-name>
+    <url-pattern>/PetiActualizarOrdenDeServicio/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiActualizarServicios</servlet-name>
+    <servlet-class>datos.peticion.PetiActualizarServicios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiActualizarServicios</servlet-name>
+    <url-pattern>/PetiActualizarServicios/*</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>PetiActualizarUsuarios</servlet-name>
+    <servlet-class>datos.peticion.PetiActualizarUsuarios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiActualizarUsuarios</servlet-name>
+    <url-pattern>/PetiActualizarUsuarios/*</url-pattern>
+  </servlet-mapping>
 </web-app>
+

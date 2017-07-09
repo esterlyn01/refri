@@ -9,6 +9,7 @@ public class Persona {
 	protected String telefono;
 	protected String email;
 	private String password;
+	private int rol;
 	
 	
 	public Persona(){}
@@ -81,6 +82,14 @@ public class Persona {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getRol() {
+		return rol;
+	}
+
+	public void setRol(int rol) {
+		this.rol = rol;
 	}
 
 	
