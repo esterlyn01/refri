@@ -201,13 +201,18 @@ var servicios=  "<div class='row bs-example'>"
 	    	   +"<input type='text' class='form-control' id='serdescripcion' placeholder='Descripcion'>"
 	    +"</div>"
     +"</div>"
-    
-    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-       +"<button type='button' class='btn btn-primary' id='cServicios'>agregar</button>"
-    +"</div>"
-    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-    	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
-  +"</div>"
+	//Boton
+	  +"<div class='row'>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	    	+"<button type='button' class='btn btn-primary' id='cServicios'>agregar</button>"
+	    +"</div>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	       +"<button type='button' class='btn btn-primary' id='tServicios'>cargar Tabla</button>"
+	    +"</div>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	    +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+	    +"</div>"
+	  +"</div>"
 +"</div>";
 
 $("#servicios").append(servicios);
@@ -557,7 +562,10 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
     	   // fin usuario
          //servicios
           x=$("#cServicios");
-         x.click(vGrup);
+         x.click(vServicios);
+         
+         x=$("#tServicios");
+         x.click(vcServicios);
          //fin servicios
          //Equipo
          x=$("#cAsis");
@@ -591,11 +599,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
     	   x.click(taabl);
     	   
     	   x=$("#tpro");
-    	   x.click(tpro);
-    	   
-    	   x=$("#tUsu");
-    	   x.click(tusu);
-    	   
+    	   x.click(tpro);    	   
     	   
     }
        
@@ -697,7 +701,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 
  }
        
-       function vGrup(){
+       function vServicios(){
 		
 		      console.log("datos");
           var tipo1=$("#sertipo").val();
@@ -705,7 +709,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 		    	
 		      $.ajax({
 				type: "POST",
-				url: 'PetiGrup',
+				url: 'PetiServicios',
 				data:{tipo2 : tipo1, descripcion2 : descripcion1} ,
 				beforeSend: function(){
 		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
@@ -1029,6 +1033,33 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
          		});	
        	   
           } 
+       
+       function vcServicios(){
+     	  //datosIniciales2("","#rolesCedu","1");
+      	   $.ajax({
+          			type: "POST",
+          			url: 'PetiBuscarServicios',
+          			async:false,
+          			data:{valll : "2"} ,
+          			beforeSend: function(){
+          		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+          				},
+          			success: function(datos){ 
+          				console.log(datos);
+          		       // $(""+destino).append(datos);
+          				//$("#rol3").append(datos);
+          				$("#contenidoModalTem").html(datos);
+         				//$('.modalTemp').focus();
+         				$('.modalTemp').modal('show');
+          				//$("#usu3").html(datos);
+          		        
+          		        },
+          			error: function(){
+          			//	$("#conte").html("Pailas esto no es Facil");
+          				},
+          		});	
+        	   
+           } 
      //*****************************FIN EVENTOS DE MAS******************************
        
        $(document).ready(function() {   

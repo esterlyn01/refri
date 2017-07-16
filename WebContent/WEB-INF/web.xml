@@ -212,5 +212,13 @@
     <servlet-name>PetiActualizarUsuarios</servlet-name>
     <url-pattern>/PetiActualizarUsuarios/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PetiServicios</servlet-name>
+    <servlet-class>datos.peticion.PetiServicios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiServicios</servlet-name>
+    <url-pattern>/PetiServicios/*</url-pattern>
+  </servlet-mapping>
 </web-app>
 

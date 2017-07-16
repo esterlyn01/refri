@@ -15,14 +15,14 @@ import datos.trabajo.Servicios;
 /**
  * Servlet implementation class PeriRol
  */
-@WebServlet("/PeriGrup")
-public class PetiGrup extends HttpServlet {
+@WebServlet("/PPetiServicios")
+public class PetiServicios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetiGrup() {
+    public PetiServicios() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -55,7 +55,7 @@ public class PetiGrup extends HttpServlet {
 	//fin datos del formulario
 	//conexion bd y procedimientos almacenados
 	Procedimiento proce = new Procedimiento();
-	proce.setCall("{call refri.inser_servicios(?, ?)}");
+	proce.setCall("{call inser_servicios(?, ?)}");
 	proce.conexion(0);
 	try {
 		proce.cl.setString(1, ser.getTipo());
