@@ -1158,6 +1158,51 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 			  					},
 			  			});
 	            break;
+		    	      case "actualizarServicio":
+			   	          var roll =$("#rolesRol2"+id+" option:selected" ).val();
+			  		      var document=$("#documento"+id).val();
+			  		      var nombre=$("#nombre"+id).val();
+			  		      var tel=$("#telefono"+id).val();
+			  		      //var passs=$("#usuPass").val();
+			   	    	        
+			   	    	        console.log("datos");
+			   	  		      var rolDatoo=$("#nombre").val();
+			   	  		    	$.ajax({
+			   	  				type: "POST",
+			   	  				url: 'PetiActualizarUsuarios',
+			   	  			    data:{idd : id, rroll : roll, usuDocumen : document, usuNombre : nombre, usuTelefono : tel, actividad : "actualizar"} ,
+							//	data:{rolDatos : datos, idd : id, actividad : "actualizar"} ,
+			   	  				beforeSend: function(){
+			   	  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+			   	  					},
+			   	  				success: function(datos){
+			   	  				//	$('#ajaxResponse').text(datos);
+			   	  		           	console.log(datos);
+			   	  		           	alert(datos +" de "+rolDatoo);
+			   	  		            },
+			   	  				error: function(){
+			   	  				//	$("#conte").html("Pailas esto no es Facil");
+			   	  					},
+			   	  			});
+			   	  		  break;
+			    	      case "eliminarServicio":
+			    	          $.ajax({
+				  				type: "POST",
+				  				url: 'PetiActualizarUsuarios',
+				  				data:{idd : id, actividad : "eliminar"} ,
+				  				beforeSend: function(){
+				  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+				  					},
+				  				success: function(datos){
+				  				//	$('#ajaxResponse').text(datos);
+				  		           	console.log(datos);
+				  		           	alert(datos +" de "+rolDatoo);
+				  		            },
+				  				error: function(){
+				  				//	$("#conte").html("Pailas esto no es Facil");
+				  					},
+				  			});
+		            break;
     	        default:
     	            //code block
     	    }

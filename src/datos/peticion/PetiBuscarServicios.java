@@ -119,11 +119,11 @@ public class PetiBuscarServicios extends HttpServlet {
 					 
 					System.out.println("ID_SERVICIO: "+rs.getInt("ID_SERVICIO"));
 					lista+="<tr class='"+colorr[color]+"'>"
-							  + "<td><input type='text' class='form-control asisFiltro' id='idusuario"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getInt("ID_SERVICIO")+"'></td>"
-							  + "<td><input type='text' class='form-control asisFiltro' id='documento"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getString("TIPO")+"'></td>"
-							  + "<td><input type='text' class='form-control asisFiltro' id='nombre"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getString("DESCRIPCION")+"'></td>"
+							  + "<td><input type='text' class='form-control asisFiltro' id='idServicio"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getInt("ID_SERVICIO")+"'></td>"
+							  + "<td><input type='text' class='form-control asisFiltro' id='serTipo"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getString("TIPO")+"'></td>"
+							  + "<td><input type='text' class='form-control asisFiltro' id='serDespcion"+rs.getInt("ID_SERVICIO")+"' value='"+rs.getString("DESCRIPCION")+"'></td>"
 							 // + "<td><input type='text' class='form-control asisFiltro' id='rol"+rs.getInt("ID_USUARIO")+"' value='"+rs.getString("ROL")+"'></td>"						
-							 + "<td><button name='"+rs.getInt("ID_SERVICIO")+"' type='button' class='buscarup btn btn-primary' id='actualizarUsuario'>actualizar</button></td>"
+							 + "<td><button name='"+rs.getInt("ID_SERVICIO")+"' type='button' class='buscarup btn btn-primary' id='actualizarServicio'>actualizar</button></td>"
 							+ "<td><button name='"+rs.getInt("ID_SERVICIO")+"' type='button' class='buscarup btn btn-primary' id='eliminarServicio'>Eliminar</button></td>"
 						+ "</tr>";
 					cont++;
