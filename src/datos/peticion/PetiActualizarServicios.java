@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datos.conexion.Procedimiento;
 import datos.programas.Rol;
+import datos.trabajo.Servicios;
 
 
 
@@ -52,23 +53,25 @@ public class PetiActualizarServicios extends HttpServlet {
 	//datos del formulario
 	String mensaje="";
 	String actividad=request.getParameter("actividad");
-	Rol r = new Rol();
+	Servicios servi = new Servicios();
+    
 	Procedimiento proce = new Procedimiento();
 	
 	if(actividad.compareToIgnoreCase("actualizar")==0){
 		    mensaje="actualizar";
-			r.setRol(request.getParameter("rolDatos"));
-			int iddd =Integer.parseInt(request.getParameter("idd"));
-			String dada = request.getParameter("rolDatos") ;
-			
+		    servi.setIdservicios(Integer.parseInt(request.getParameter("idd")));
+			servi.setTipo(request.getParameter("tipoo"));
+			servi.setDescripcion(request.getParameter("descripcionn"));
+						
 			//fin datos del formulario
 			//conexion bd y procedimientos almacenados
 			
-			proce.setCall("{CALL actualizarRol( ?, ?)}");
+			proce.setCall("{CALL actualizarServicios(?, ?, ?)}");
 			proce.conexion(0);
 			try {
-				proce.cl.setInt(1, iddd);
-				proce.cl.setString(2, dada);
+				proce.cl.setInt(1, servi.getIdservicios());
+				proce.cl.setString(2, servi.getTipo());
+				proce.cl.setString(3, servi.getDescripcion());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,7 +86,7 @@ public class PetiActualizarServicios extends HttpServlet {
 			//fin datos del formulario
 			//conexion bd y procedimientos almacenados
 			
-			proce.setCall("{CALL eliminarRol(?)}");
+			proce.setCall("{CALL eliminarServicio(?)}");
 			proce.conexion(0);
 			try {
 				proce.cl.setInt(1, iddd);
@@ -109,7 +112,7 @@ public class PetiActualizarServicios extends HttpServlet {
 		 response.getWriter().write("No se "+mensaje+" los datos");
     }
 	
-	System.out.println(""+r.getRol());
+	System.out.println("servicio: "+servi.getDescripcion());
 	}
 	
 
