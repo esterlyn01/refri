@@ -89,29 +89,65 @@ public class PetiBuscarEquipos extends HttpServlet {
 				}
 		}else
 		if(val==2){
-				try {
-					//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-							 			
-					String lista="<table class='table table-condensed'><tr><th>Rol</th></tr>";
-					while (rs.next()) {
-					  //Obtenemos los valores de la consulta y creamos
-					  //nuestro objeto producto				
-						System.out.println("Rol: "+rs.getString("rol"));
-						lista+="<tr><td><input type='text' class='form-control asisFiltro' id='"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='AQUI btn btn-primary' id='cGrupos'>actualizar</button></td></tr>";
-	//		      s.setDane(rs.getInt("idprogramaUsuario"));
-	//		      s.setSede(rs.getString("Sede"));
-	//		      s.setDireccion(rs.getString("Direccion"));
-	//		      s.setEmail(rs.getString("Email"));
-	//		      s.setTelefono(rs.getString("Telefono"));
-			  }
-					//lista+="["+c+"[]]";
-					lista+="</table>";
-					response.setContentType("text/plain");
-					response.getWriter().write(lista);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
+			try {
+				//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
+						 			
+				String lista="<table class='table table-bordered'><tr>"
+						+ "<th>Placa</th>"
+						+ "<th>Tipo</th>"
+						+ "<th>Btu</th>"
+						+ "<th>Ubicacion</th>"
+						+ "<th>Amperaje</th>"
+						+ "<th>Voltaje</th>"
+						+ "<th>Presion Alta</th>"
+						+ "<th>Presion baja</th>"
+						+ "<th>Refrigerante</th>"
+						+ "<th>Evento</th>"
+						+ "<th>Evento</th>"
+						+ "</tr>";
+				int color=1,cont=1;
+				String[] colorr=new String[3];
+				colorr[1]="active";
+				colorr[2]="success";
+				
+				while (rs.next()) {
+					if(cont%2==0){
+						color=1;
+					}else{
+						color=2;
+					}
+				  //Obtenemos los valores de la consulta y creamos
+				  //nuestro objeto producto				
+					System.out.println("Placa: "+rs.getString("placa"));
+					lista+="<tr class='"+colorr[color]+"'>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PLACA")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("TIPO_DE_AIRE_A")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("CAPACIDAD_BTU")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("UBICACION")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("AMPERAJE")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("VOLTAJE")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PRESION_ALTA")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PRESION_BAJA")+"'></td>"
+								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("REFRIGERANTE")+"'></td>"
+																							
+								+ "<td><button name='"+rs.getString("placa")+"' type='button' class='buscarup btn btn-primary' id='actualizarEquipo'>actualizar</button></td>"
+								+ "<td><button name='"+rs.getString("placa")+"' type='button' class='buscarup btn btn-primary' id='eliminarEquipo'>Eliminar</button></td>"
+							+ "</tr>";
+					cont++;
+//		      s.setDane(rs.getInt("idprogramaUsuario"));
+//		      s.setSede(rs.getString("Sede"));
+//		      s.setDireccion(rs.getString("Direccion"));
+//		      s.setEmail(rs.getString("Email"));
+//		      s.setTelefono(rs.getString("Telefono"));
+		  }
+				//lista+="["+c+"[]]";
+				lista+="</table>";
+				response.setContentType("text/plain");
+				response.getWriter().write(lista);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 				
 		}else
 			if(val==3){

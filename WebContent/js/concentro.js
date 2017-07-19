@@ -295,15 +295,18 @@ var equipos=""
 ////			    +"</select>"
 //	    +"</div>"
 //    +"</div>"
-    //Boton
-    +"<div class='row'>"
-	    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-	       +"<button type='button' class='btn btn-primary' id='cAsis'>agregar</button>"
+  //Boton
+	  +"<div class='row'>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	    	+"<button type='button' class='btn btn-primary' id='cAsis'>agregar</button>"
+		+"</div>"
+	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	       +"<button type='button' class='btn btn-primary' id='tEquipos'>cargar Tabla</button>"
 	    +"</div>"
 	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-        	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
-      +"</div>"
-    +"</div>"
+	    +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+	    +"</div>"
+	  +"</div>"
 +"</div>";
 
 $("#equipos").append(equipos);
@@ -570,6 +573,9 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
          //Equipo
          x=$("#cAsis");
   	     x.click(vAsis);
+  	     
+	  	 x=$("#tEquipos");
+	     x.click(vcEquipo);
          //fin Equipo
   	     //crear servicios
   	     x=$("#cCrearServicios");
@@ -1060,6 +1066,33 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
           		});	
         	   
            } 
+       
+       function vcEquipo(){
+      	  //datosIniciales2("","#rolesCedu","1");
+       	   $.ajax({
+           			type: "POST",
+           			url: 'PetiBuscarEquipos',
+           			async:false,
+           			data:{valll : "2"} ,
+           			beforeSend: function(){
+           		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+           				},
+           			success: function(datos){ 
+           				console.log(datos);
+           		       // $(""+destino).append(datos);
+           				//$("#rol3").append(datos);
+           				$("#contenidoModalTem").html(datos);
+          				//$('.modalTemp').focus();
+          				$('.modalTemp').modal('show');
+           				//$("#usu3").html(datos);
+           		        
+           		        },
+           			error: function(){
+           			//	$("#conte").html("Pailas esto no es Facil");
+           				},
+           		});	
+         	   
+            } 
      //*****************************FIN EVENTOS DE MAS******************************
        
        $(document).ready(function() {   
