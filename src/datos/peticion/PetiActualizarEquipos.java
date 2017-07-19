@@ -83,7 +83,7 @@ public class PetiActualizarEquipos extends HttpServlet {
 			//fin datos del formulario
 			//conexion bd y procedimientos almacenados
 			
-			proce.setCall("{CALL eliminarRol(?)}");
+			proce.setCall("{CALL eliminarEquipo(?)}");
 			proce.conexion(0);
 			try {
 				proce.cl.setInt(1, iddd);

@@ -220,5 +220,13 @@
     <servlet-name>PetiServicios</servlet-name>
     <url-pattern>/PetiServicios/*</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>PetiInforme</servlet-name>
+    <servlet-class>datos.peticion.PetiInforme</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PetiInforme</servlet-name>
+    <url-pattern>/PetiInforme/*</url-pattern>
+  </servlet-mapping>
 </web-app>
 

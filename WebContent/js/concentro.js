@@ -12,6 +12,7 @@ $(document).ready(concentroo);
              +"<li role='presentation'><a href='#equipos' role='tab' data-toggle='tab' id='equipos2'>equipos</a></li>"
              +"<li role='presentation'><a href='#crearServicio' role='tab' data-toggle='tab' id='crearServicios2'>Orden de servicio</a></li>"
              +"<li role='presentation'><a href='#asignarequipo' role='tab' data-toggle='tab' id='asignarequipo2'>asignar equipo</a></li>"
+             +"<li role='presentation'><a href='#reporte' role='tab' data-toggle='tab' id='reporte2'>Reporte</a></li>"
             +"</ul>"
            +"<!-- Tab panes -->"
            +"<div class='tab-content'>"
@@ -21,6 +22,7 @@ $(document).ready(concentroo);
              +"<div role='tabpanel' class='tab-pane' id='equipos'></div>"
               +"<div role='tabpanel' class='tab-pane' id='crearServicio'></div>"
              +"<div role='tabpanel' class='tab-pane' id='asignarequipo'></div>"
+             +"<div role='tabpanel' class='tab-pane' id='reporte'></div>"
           +"</div>");
 
 
@@ -199,6 +201,13 @@ var servicios=  "<div class='row bs-example'>"
 	    +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Descripcion</label></div>"
 	    +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>"
 	    	   +"<input type='text' class='form-control' id='serdescripcion' placeholder='Descripcion'>"
+	    +"</div>"
+    +"</div>"
+  //campo
+	+"<div class='row monitor'>"
+	    +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Valor</label></div>"
+	    +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>"
+	    	   +"<input type='number' class='form-control' id='serValor' placeholder='Valor'>"
 	    +"</div>"
     +"</div>"
 	//Boton
@@ -391,6 +400,22 @@ var asignarequipo=  ""
 
 $("#asignarequipo").append(asignarequipo);
 
+
+var reporte=  ""  
+	+"<div class='row bs-example centert col-xs-12 col-sm-12 col-md-12 col-lg-12'>"
+	//Boton
+	    +"<div class='row'>"
+		    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
+		       +"<button type='button' id='reporte' class='buscarup  btn btn-primary' id='reporte'>reporte</button>"
+		    +"</div>"
+	    +"</div>"
+  +"</div>"
+  +"<div class='row bs-example centert col-xs-12 col-sm-12 col-md-12 col-lg-12' id ='subReporte'>"
+	
++"</div>";
+
+
+$("#reporte").append(reporte);
        
 //datosIniciales4();
 datosIniciales3("PetiBuscarRol","#rolesDivRol","3");
@@ -712,11 +737,12 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 		      console.log("datos");
           var tipo1=$("#sertipo").val();
 		      var descripcion1=$("#serdescripcion").val();
+		      var valor1=$("#serValor").val();
 		    	
 		      $.ajax({
 				type: "POST",
 				url: 'PetiServicios',
-				data:{tipo2 : tipo1, descripcion2 : descripcion1} ,
+				data:{tipo2 : tipo1, descripcion2 : descripcion1, valor2 : valor1} ,
 				beforeSend: function(){
 		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
 					},
@@ -1234,6 +1260,56 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 				  					},
 				  			});
 		            break;
+			    	      case "actualizarEquipo":
+				   	          var placa1=$("#airPlaca"+id).val();
+						      var tipoDeAire1=$("#airtipodeaire"+id).val();
+						      var btu1=$("#airbtu"+id).val();
+						      var ubicacion1=$("#airubicacion"+id).val();
+						      var amperaje1=$("#airamperaje"+id).val();
+						      var voltaje1=$("#airvoltaje"+id).val();
+						      var presionAlta1=$("#airpresionalta"+id).val();
+						      var presionbaja1=$("#airpresionbaja"+id).val();
+						      var Refrigerante1=$("#airrefrigerante"+id).val();
+				  		     //var passs=$("#usuPass").val();
+				   	    	        
+				   	    	        console.log("datos");
+				   	  		      var rolDatoo=$("#nombre").val();
+				   	  		    	$.ajax({
+				   	  				type: "POST",
+				   	  				url: 'PetiActualizarEquipos',
+				   	  				data:{idd: id, airPlaca2 : placa1, tipoDeAire2 : tipoDeAire1, btu2 : btu1, ubicacion2 : ubicacion1, amperaje2 : amperaje1, voltaje2 : voltaje1, presionAlta2 : presionAlta1, presionbaja2 : presionbaja1, Refrigerante2 : Refrigerante1} ,
+				   	  				//	data:{rolDatos : datos, idd : id, actividad : "actualizar"} ,
+				   	  				beforeSend: function(){
+				   	  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+				   	  					},
+				   	  				success: function(datos){
+				   	  				//	$('#ajaxResponse').text(datos);
+				   	  		           	console.log(datos);
+				   	  		           	alert(datos +" de "+rolDatoo);
+				   	  		            },
+				   	  				error: function(){
+				   	  				//	$("#conte").html("Pailas esto no es Facil");
+				   	  					},
+				   	  			});
+				   	  		  break;
+				    	      case "eliminarEquipo":
+				    	          $.ajax({
+					  				type: "POST",
+					  				url: 'PetiActualizarEquipos',
+					  				data:{idd : id, actividad : "eliminar"} ,
+					  				beforeSend: function(){
+					  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+					  					},
+					  				success: function(datos){
+					  				//	$('#ajaxResponse').text(datos);
+					  		           	console.log(datos);
+					  		           	alert(datos +" de "+rolDatoo);
+					  		            },
+					  				error: function(){
+					  				//	$("#conte").html("Pailas esto no es Facil");
+					  					},
+					  			});
+			            break;
     	        default:
     	            //code block
     	    }

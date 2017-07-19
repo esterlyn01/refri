@@ -5,6 +5,7 @@ public class Servicios {
 	private int idservicios;
 	private String tipo;
 	private String descripcion;
+	private int valor;
 	
 	public Servicios() {
 		// TODO Auto-generated constructor stub
@@ -32,6 +33,14 @@ public class Servicios {
 
 	public void setIdservicios(int idservicios) {
 		this.idservicios = idservicios;
+	}
+
+	public int getValor() {
+		return valor;
+	}
+
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
 	

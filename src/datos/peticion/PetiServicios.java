@@ -52,14 +52,16 @@ public class PetiServicios extends HttpServlet {
 	Servicios ser = new Servicios();
 	ser.setTipo(request.getParameter("tipo2"));
 	ser.setDescripcion(request.getParameter("descripcion2"));
+	ser.setValor(Integer.parseInt(request.getParameter("valor2")));
 	//fin datos del formulario
 	//conexion bd y procedimientos almacenados
 	Procedimiento proce = new Procedimiento();
-	proce.setCall("{call inser_servicios(?, ?)}");
+	proce.setCall("{call inser_servicios(?, ?, ?)}");
 	proce.conexion(0);
 	try {
 		proce.cl.setString(1, ser.getTipo());
 		proce.cl.setString(2, ser.getDescripcion());
+		proce.cl.setInt(3, ser.getValor());
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
