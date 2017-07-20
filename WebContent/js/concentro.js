@@ -406,7 +406,7 @@ var reporte=  ""
 	//Boton
 	    +"<div class='row'>"
 		    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-		       +"<button type='button' id='reporte' class='buscarup  btn btn-primary' id='reporte'>reporte</button>"
+		       +"<button type='button' id='reportess' class='buscarup btn btn-primary'>reporte</button>"
 		    +"</div>"
 	    +"</div>"
   +"</div>"
@@ -610,7 +610,10 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
   	     x=$("#cAsignarEqui");
 	     x.click(vAsignarEqui);
   	     //finAsignarEquipo
-  	     
+  	     //informe
+	     x=$("#reportess");
+  	     x.click(tinforme);
+  	     //fin informe
 
 
     	   
@@ -1039,6 +1042,33 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
        	   
           } 
        
+       function tinforme(){
+     	  //datosIniciales2("","#rolesCedu","1");
+      	   $.ajax({
+          			type: "POST",
+          			url: 'PetiInforme',
+          			async:false,
+          			data:{vall : "2"} ,
+          			beforeSend: function(){
+          		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+          				},
+          			success: function(datos){ 
+          				console.log(datos);
+          		       // $(""+destino).append(datos);
+          				//$("#rol3").append(datos);
+          				$("#contenidoModalTem").html(datos);
+         				//$('.modalTemp').focus();
+         				$('.modalTemp').modal('show');
+          				//$("#usu3").html(datos);
+          		        
+          		        },
+          			error: function(){
+          			//	$("#conte").html("Pailas esto no es Facil");
+          				},
+          		});	
+        	   
+           } 
+       
        function tusu(){
     	  //datosIniciales2("","#rolesCedu","1");
      	   $.ajax({
@@ -1310,6 +1340,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 					  					},
 					  			});
 			            break;
+				    	      
     	        default:
     	            //code block
     	    }

@@ -51,18 +51,20 @@ public class PetiInforme extends HttpServlet {
 
 	@SuppressWarnings("static-access")
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String lista="";
+		
 		//fin datos del formulario
 		//conexion bd y procedimientos almacenados
 		Procedimiento proce = new Procedimiento();
-		proce.setCall("{CALL elEquipoQueMasIngresa}");
+		proce.setCall("{CALL InfoElEquipoQueMasIngresa()}");
 		proce.conexion(1);
 		
 		ResultSet rs = proce.cierreSelect();
 		
 		try {
 			//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-					 			
-			String lista="<table class='table table-bordered'>"
+			lista="<h3>El equipo que más ingreso y soporte más realizado para ese equipo</h3>";		 			
+			lista+="<table class='table table-bordered'>"
 						+ "<tr><th>EQUIPO_PLACA</th>"
 						+ "<th>TIPO</th>"
 					+ "</tr>";
@@ -79,19 +81,104 @@ public class PetiInforme extends HttpServlet {
 				}
 			  //Obtenemos los valores de la consulta y creamos
 			  //nuestro objeto producto				
-				System.out.println("Rol: "+rs.getString("rol"));
-				lista+="<tr class='"+colorr[color]+"'><td><input type='text' class='form-control asisFiltro' id='rol"+rs.getString("id_rol")+"' value='"+rs.getString("rol")+"'></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='buscarup btn btn-primary' id='actualizarRol'>actualizar</button></td><td><button name='"+rs.getString("id_rol")+"' type='button' class='buscarup btn btn-primary' id='eliminarRol'>Eliminar</button></td></tr>";
+				lista+="<br/><tr class='"+colorr[color]+"'>"
+							+ "<td>"+rs.getString("EQUIPO_PLACA")+"</td>"
+							+ "<td>"+rs.getString("TIPO")+"</td>"
+						+ "</tr><br/><br/>";
 				cont++;
 	  }
 			//lista+="["+c+"[]]";
 			lista+="</table>";
-			response.setContentType("text/plain");
-			response.getWriter().write(lista);
+			//response.setContentType("text/plain");
+			//response.getWriter().write(lista);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		/////////////////////////////////////////////////
+		proce.setCall("{CALL equiposEnUnMes()}");
+		proce.conexion(1);
+		
+		rs = proce.cierreSelect();
+		
+		try {
+			//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
+			lista+="<h3>equipos en un mes</h3>";		 			
+			lista+="<table class='table table-bordered'>"
+						+ "<tr><th>PLACA</th>"
+						+ "<th>MES</th>"
+						+ "<th>EVENTOS</th>"
+					+ "</tr>";
+			int color=1,cont=1;
+			String[] colorr=new String[3];
+			colorr[1]="active";
+			colorr[2]="success";
+			
+			while (rs.next()) {
+				if(cont%2==0){
+					color=1;
+				}else{
+					color=2;
+				}
+			  //Obtenemos los valores de la consulta y creamos
+			  //nuestro objeto producto				
+				lista+="<br/><tr class='"+colorr[color]+"'>"
+							+ "<td>"+rs.getString("EQUIPO_PLACA")+"</td>"
+							+ "<td>"+rs.getString("mes")+"</td>"
+							+ "<td>"+rs.getString("equpisEnMes")+"</td>"
+						+ "</tr><br/><br/>";
+				cont++;
+	  }
+			//lista+="["+c+"[]]";
+			lista+="</table>";
+			//response.setContentType("text/plain");
+			//response.getWriter().write(lista);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	/////////////////////////////////////////////////
+	proce.setCall("{CALL ingresosDiarios()}");
+	proce.conexion(1);
+	
+	rs = proce.cierreSelect();
+	
+	try {
+	//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
+		lista+="<h3>ingreso diarios</h3>";
+	lista+="<table class='table table-bordered'>"
+	+ "<tr><th>INGRESOS DIARIOS</th>"
+	+ "</tr>";
+	int color=1,cont=1;
+	String[] colorr=new String[3];
+	colorr[1]="active";
+	colorr[2]="success";
+		
+	while (rs.next()) {
+	if(cont%2==0){
+	color=1;
+	}else{
+	color=2;
+	}
+	//Obtenemos los valores de la consulta y creamos
+	//nuestro objeto producto				
+	lista+="<tr class='"+colorr[color]+"'>"
+	+ "<td>"+rs.getString("FECHE_ORDEN_SEVICIO")+"</td>"
+	+ "<td>"+rs.getString("ingresosDiarios")+"</td>"
+	+ "</tr><br/><br/>";
+	cont++;
+	}
+	//lista+="["+c+"[]]";
+	lista+="</table>";
+	response.setContentType("text/plain");
+	response.getWriter().write(lista);
+	} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
+			
+		////fin de todo//////
 		proce.cierreTotal();
 	}
 	
