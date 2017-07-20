@@ -235,6 +235,13 @@ var equipos=""
          +"<input type='text' class='form-control' id='airPlaca' placeholder='Placa'>"
     +"</div>"
 +"</div>"
+//marca
++"<div class='row monitor'>"
+    +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>marca</label></div>"
+    +"<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>"
+         +"<input type='text' class='form-control' id='airmarca' placeholder='marca'>"
+    +"</div>"
++"</div>"
 //campo
 +"<div class='row monitor'>"
     +"<div class='col-xs-3 col-sm-3 col-md-2 col-lg-2'><label>Tipo de aire</label></div>"
@@ -927,6 +934,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 		      console.log("datos");
 		      //var  =$( "#asisListaEstu option:selected" ).val();
 		      var placa1=$("#airPlaca").val();
+		      var marca1=$("#airmarca").val();
 		      var tipoDeAire1=$("#airtipodeaire").val();
 		      var btu1=$("#airbtu").val();
 		      var ubicacion1=$("#airubicacion").val();
@@ -940,7 +948,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 		      $.ajax({
 				type: "POST",
 				url: 'PetiAsistencia',
-				data:{airPlaca2 : placa1, tipoDeAire2 : tipoDeAire1, btu2 : btu1, ubicacion2 : ubicacion1, amperaje2 : amperaje1, voltaje2 : voltaje1, presionAlta2 : presionAlta1, presionbaja2 : presionbaja1, Refrigerante2 : Refrigerante1} ,
+				data:{marca2 : marca1, airPlaca2 : placa1, tipoDeAire2 : tipoDeAire1, btu2 : btu1, ubicacion2 : ubicacion1, amperaje2 : amperaje1, voltaje2 : voltaje1, presionAlta2 : presionAlta1, presionbaja2 : presionbaja1, Refrigerante2 : Refrigerante1} ,
 				beforeSend: function(){
 		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
 					},

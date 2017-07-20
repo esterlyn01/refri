@@ -114,7 +114,7 @@ public class PetiBuscarCrearServicios extends HttpServlet {
 					}
 				  //Obtenemos los valores de la consulta y creamos
 				  //nuestro objeto producto				
-					System.out.println("idORDEN_SERVICIO: "+rs.getString("idORDEN_SERVICIO"));
+					System.out.println("FECHE_ORDEN_SEVICIO: "+rs.getString("FECHE_ORDEN_SEVICIO"));
 					lista+="<tr class='"+colorr[color]+"'>"
 								//+ "<td><input type='text' class='form-control asisFiltro' id='crearServicio"+rs.getString("idORDEN_SERVICIO")+"' value='"+rs.getString("FECHE_ORDEN_SEVICIO")+"'></td>"
 								+ "<td>"+rs.getString("FECHE_ORDEN_SEVICIO")+"</td>"

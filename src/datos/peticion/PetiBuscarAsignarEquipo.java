@@ -59,7 +59,7 @@ public class PetiBuscarAsignarEquipo extends HttpServlet {
 		//fin datos del formulario
 		//conexion bd y procedimientos almacenados
 		Procedimiento proce = new Procedimiento();
-		proce.setCall("{CALL select_servicio()}");
+		proce.setCall("{CALL selecAsignarServicio()}");
 		proce.conexion(1);
 		
 		ResultSet rs = proce.cierreSelect();
@@ -95,16 +95,9 @@ public class PetiBuscarAsignarEquipo extends HttpServlet {
 						 			
 				String lista="<table class='table table-bordered'><tr>"
 						+ "<th>Placa</th>"
-						+ "<th>Tipo</th>"
-						+ "<th>Btu</th>"
-						+ "<th>Ubicacion</th>"
-						+ "<th>Amperaje</th>"
-						+ "<th>Voltaje</th>"
-						+ "<th>Presion Alta</th>"
-						+ "<th>Presion baja</th>"
-						+ "<th>Refrigerante</th>"
-						+ "<th>Evento</th>"
-						+ "<th>Evento</th>"
+						+ "<th>fecha</th>"
+						+ "<th>hora</th>"
+						+ "<th>ID Orden Servicio</th>"						
 						+ "</tr>";
 				int color=1,cont=1;
 				String[] colorr=new String[3];
@@ -119,21 +112,14 @@ public class PetiBuscarAsignarEquipo extends HttpServlet {
 					}
 				  //Obtenemos los valores de la consulta y creamos
 				  //nuestro objeto producto				
-					System.out.println("Placa: "+rs.getString("placa"));
+					System.out.println("EQUIPO_PLACA: "+rs.getString("EQUIPO_PLACA"));
 					lista+="<tr class='"+colorr[color]+"'>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PLACA")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("TIPO_DE_AIRE_A")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("CAPACIDAD_BTU")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("UBICACION")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("AMPERAJE")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("VOLTAJE")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PRESION_ALTA")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PRESION_BAJA")+"'></td>"
-								+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("REFRIGERANTE")+"'></td>"
-																							
-								+ "<td><button name='"+rs.getString("placa")+"' type='button' class='buscarup btn btn-primary' id='actualizarEquipo'>actualizar</button></td>"
-								+ "<td><button name='"+rs.getString("placa")+"' type='button' class='buscarup btn btn-primary' id='eliminarEquipo'>Eliminar</button></td>"
-							+ "</tr>";
+								//+ "<td><input type='text' class='form-control asisFiltro' id='equipo"+rs.getString("placa")+"' value='"+rs.getString("PLACA")+"'></td>"
+								+ "<td>"+rs.getString("EQUIPO_PLACA")+"</td>"
+								+ "<td>"+rs.getString("FECHA")+"</td>"
+								+ "<td>"+rs.getString("HORA")+"</td>"
+								+ "<td>"+rs.getString("orden_servicio_idORDEN_SERVICIO")+"</td>"																	
+						+ "</tr>";
 					cont++;
 //		      s.setDane(rs.getInt("idprogramaUsuario"));
 //		      s.setSede(rs.getString("Sede"));

@@ -4,6 +4,7 @@ package datos.trabajo;
 public class Equipo {
 	private int idEquipo;
 	private java.lang.String placa;
+	private java.lang.String marca;
 	private java.lang.String tipoAire;
 	private int btu;
 	private java.lang.String ubicacion;
@@ -96,6 +97,15 @@ public class Equipo {
 	public void setIdEquipo(int idEquipo) {
 		this.idEquipo = idEquipo;
 	}
+
+	public java.lang.String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(java.lang.String marca) {
+		this.marca = marca;
+	}
+	
 	
 	
 

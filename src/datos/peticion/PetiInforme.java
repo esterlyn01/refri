@@ -63,9 +63,9 @@ public class PetiInforme extends HttpServlet {
 		
 		try {
 			//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-			lista="<h3>El equipo que más ingreso y soporte más realizado para ese equipo</h3>";		 			
+			lista="<h3>Marca del equipo que mas ingresos y el servicio a prestar</h3>";		 			
 			lista+="<table class='table table-bordered'>"
-						+ "<tr><th>EQUIPO_PLACA</th>"
+						+ "<tr><th>MARCA</th>"
 						+ "<th>TIPO</th>"
 					+ "</tr>";
 			int color=1,cont=1;
@@ -82,7 +82,7 @@ public class PetiInforme extends HttpServlet {
 			  //Obtenemos los valores de la consulta y creamos
 			  //nuestro objeto producto				
 				lista+="<br/><tr class='"+colorr[color]+"'>"
-							+ "<td>"+rs.getString("EQUIPO_PLACA")+"</td>"
+							+ "<td>"+rs.getString("MARCA")+"</td>"
 							+ "<td>"+rs.getString("TIPO")+"</td>"
 						+ "</tr><br/><br/>";
 				cont++;
@@ -104,7 +104,7 @@ public class PetiInforme extends HttpServlet {
 		
 		try {
 			//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-			lista+="<h3>equipos en un mes</h3>";		 			
+			lista+="<h3>Cantidad de equipos reparados en un mes</h3>";		 			
 			lista+="<table class='table table-bordered'>"
 						+ "<tr><th>PLACA</th>"
 						+ "<th>MES</th>"
@@ -146,7 +146,7 @@ public class PetiInforme extends HttpServlet {
 	
 	try {
 	//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-		lista+="<h3>ingreso diarios</h3>";
+		lista+="<h3>Reporte total de los ingresos diarios</h3>";
 	lista+="<table class='table table-bordered'>"
 	+ "<tr><th>INGRESOS DIARIOS</th>"
 	+ "</tr>";
@@ -177,7 +177,45 @@ public class PetiInforme extends HttpServlet {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
 	}
-			
+	
+		/////////////////////////////////////////////////
+		proce.setCall("{CALL factura()}");
+		proce.conexion(1);
+		
+		rs = proce.cierreSelect();
+		
+		try {
+		//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
+		lista+="<h3>Total facturas</h3>";
+		lista+="<table class='table table-bordered'>"
+		+ "<tr><th>Valor Facturas</th>"
+		+ "</tr>";
+		int color=1,cont=1;
+		String[] colorr=new String[3];
+		colorr[1]="active";
+		colorr[2]="success";
+		
+		while (rs.next()) {
+		if(cont%2==0){
+		color=1;
+		}else{
+		color=2;
+		}
+		//Obtenemos los valores de la consulta y creamos
+		//nuestro objeto producto				
+		lista+="<tr class='"+colorr[color]+"'>"
+		+ "<td>"+rs.getString("totalFacturas")+"</td>"
+		+ "</tr><br/><br/>";
+		cont++;
+		}
+		//lista+="["+c+"[]]";
+		lista+="</table>";
+		response.setContentType("text/plain");
+		response.getWriter().write(lista);
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
 		////fin de todo//////
 		proce.cierreTotal();
 	}

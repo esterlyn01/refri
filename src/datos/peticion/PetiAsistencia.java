@@ -49,6 +49,7 @@ public class PetiAsistencia extends HttpServlet {
 	System.out.println("registro de equipos (clase equipo)");
 	//datos del formulario
 	Equipo equii = new Equipo();
+	equii.setMarca(request.getParameter("marca2"));
 	equii.setPlaca(request.getParameter("airPlaca2"));
 	equii.setTipoAire(request.getParameter("tipoDeAire2"));
 	equii.setBtu(Integer.parseInt(request.getParameter("btu2")));
@@ -64,7 +65,7 @@ public class PetiAsistencia extends HttpServlet {
 	//conexion bd y procedimientos almacenados
 	Procedimiento proce = new Procedimiento();
 	//`guardarPrograma`(in progra varchar(45))
-	proce.setCall("{call insert_equipos(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+	proce.setCall("{call insert_equipos(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 	proce.conexion(0);
 	try {
 		proce.cl.setString(1, equii.getPlaca());
@@ -76,6 +77,7 @@ public class PetiAsistencia extends HttpServlet {
 		proce.cl.setInt(7, equii.getPrecionAlta());
 		proce.cl.setInt(8, equii.getPresionBaja());
 		proce.cl.setString(9, equii.getRefrigerante());
+		proce.cl.setString(10, equii.getMarca());
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
