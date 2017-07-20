@@ -338,16 +338,19 @@ var crearServicios=  ""
              //+"<input type='text' class='form-control' id='rolesRol' placeholder='colocar Nombre'>"
         +"</div>"
       +"</div>"
-     //Boton
-      +"<div class='row'>"
-        +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-           +"<button type='button' class='btn btn-primary' id='cCrearServicios'>agregar</button>"
-        +"</div>"
-      +"</div>"
-      +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-      	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
-    +"</div>"
-+"</div>"
+    
+	//Boton
+	+"<div class='row'>"
+	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	  	+"<button type='button' class='btn btn-primary' id='cCrearServicios'>agregar</button>"
+	  +"</div>"
+	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	     +"<button type='button' class='btn btn-primary' id='tCrearServicios'>cargar Tabla</button>"
+	  +"</div>"
+	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+	  +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+	  +"</div>"
+	+"</div>"
 +"</div>";
 
 
@@ -386,14 +389,17 @@ var asignarequipo=  ""
 		    +"</div>"
 	    +"</div>"
 	  //Boton
-	    +"<div class='row'>"
-		    +"<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>"
-		       +"<button type='button' class='btn btn-primary' id='cAsignarEqui'>agregar</button>"
-		    +"</div>"
-	    +"</div>"
-	    +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
-        	+"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
-      +"</div>"
+  	+"<div class='row'>"
+  	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+  	  	+"<button type='button' class='btn btn-primary' id='cAsignarEqui'>agregar</button>"
+    +"</div>"
+  	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+  	     +"<button type='button' class='btn btn-primary' id='tAsignarEqui'>cargar Tabla</button>"
+  	  +"</div>"
+  	  +"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>"
+  	  +"<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.modalTemp'>Ver tabla</button>"
+  	  +"</div>"
+  	+"</div>"
 +"</div>"
 +"</div>";
 
@@ -605,10 +611,16 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
   	     //crear servicios
   	     x=$("#cCrearServicios");
   	     x.click(vCrearServicios);
+  	     
+  	     x=$("#tCrearServicios");
+	     x.click(vtCrearServicios);
   	     //fin crear servicios
   	     //asignarEquipo
   	     x=$("#cAsignarEqui");
 	     x.click(vAsignarEqui);
+	     
+	     x=$("#tAsignarEqui");
+	     x.click(vtAsignarEqui);
   	     //finAsignarEquipo
   	     //informe
 	     x=$("#reportess");
@@ -1149,6 +1161,60 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
            		});	
          	   
             } 
+       
+       function vtCrearServicios(){
+       	  //datosIniciales2("","#rolesCedu","1");
+        	   $.ajax({
+            			type: "POST",
+            			url: 'PetiBuscarCrearServicios',
+            			async:false,
+            			data:{valll : "2"} ,
+            			beforeSend: function(){
+            		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+            				},
+            			success: function(datos){ 
+            				console.log(datos);
+            		       // $(""+destino).append(datos);
+            				//$("#rol3").append(datos);
+            				$("#contenidoModalTem").html(datos);
+           				//$('.modalTemp').focus();
+           				$('.modalTemp').modal('show');
+            				//$("#usu3").html(datos);
+            		        
+            		        },
+            			error: function(){
+            			//	$("#conte").html("Pailas esto no es Facil");
+            				},
+            		});	
+          	   
+             }
+       
+       function vtAsignarEqui(){
+        	  //datosIniciales2("","#rolesCedu","1");
+         	   $.ajax({
+             			type: "POST",
+             			url: 'PetiBuscarAsignarEquipo',
+             			async:false,
+             			data:{valll : "2"} ,
+             			beforeSend: function(){
+             		      // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
+             				},
+             			success: function(datos){ 
+             				console.log(datos);
+             		       // $(""+destino).append(datos);
+             				//$("#rol3").append(datos);
+             				$("#contenidoModalTem").html(datos);
+            				//$('.modalTemp').focus();
+            				$('.modalTemp').modal('show');
+             				//$("#usu3").html(datos);
+             		        
+             		        },
+             			error: function(){
+             			//	$("#conte").html("Pailas esto no es Facil");
+             				},
+             		});	
+           	   
+              }
      //*****************************FIN EVENTOS DE MAS******************************
        
        $(document).ready(function() {   
