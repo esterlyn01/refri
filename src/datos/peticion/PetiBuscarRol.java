@@ -96,7 +96,8 @@ public class PetiBuscarRol extends HttpServlet {
 				try {
 					//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 							 			
-					String lista="<table class='table table-bordered'><tr><th>Rol</th><th>Eventos</th></tr>";
+					String lista="<h3>Roles</h3>"
+							+ "<table class='table table-bordered'><tr><th>Rol</th><th>Eventos</th></tr>";
 					int color=1,cont=1;
 					String[] colorr=new String[3];
 					colorr[1]="active";

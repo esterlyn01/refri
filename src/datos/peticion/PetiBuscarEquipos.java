@@ -92,7 +92,8 @@ public class PetiBuscarEquipos extends HttpServlet {
 			try {
 				//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 						 			
-				String lista="<table class='table table-bordered'><tr>"
+				String lista="<h3>Equipos</h3>"
+						+ "<table class='table table-bordered'><tr>"
 						+ "<th>Placa</th>"
 						+ "<th>Tipo</th>"
 						+ "<th>Btu</th>"

@@ -87,7 +87,8 @@ public class PetiBuscarUsuarioXCedu extends HttpServlet {
 		if(val==2){
 			try {
 				//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
-				String lista="<table class='table'>"
+				String lista="<h3>Usuarios</h3>"
+						+ "<table class='table'>"
 						  +"<tr><th>ID</th>"
 						  +"<th>Documento</th>"
 			   		      +"<th>Nombre</th>"
@@ -149,7 +150,7 @@ public class PetiBuscarUsuarioXCedu extends HttpServlet {
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				
 						System.out.println("DOCUMENTO: "+rs.getString("DOCUMENTO"));
-						lista+="<option value='"+rs.getString("ID_USUARIO")+"'>"+rs.getString("DOCUMENTO")+"</option>";
+						lista+="<option value='"+rs.getString("ID_USUARIO")+"'>"+rs.getString("NOMBRE_USUARIO")+" - "+rs.getString("DOCUMENTO")+"</option>";
 		//	      s.setDane(rs.getInt("idprogramaUsuario"));
 		//	      s.setSede(rs.getString("Sede"));
 		//	      s.setDireccion(rs.getString("Direccion"));

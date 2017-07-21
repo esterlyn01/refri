@@ -93,7 +93,8 @@ public class PetiBuscarCrearServicios extends HttpServlet {
 			try {
 				//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 							
-				String lista="<table class='table table-bordered'><tr>"
+				String lista="<h3>Creacion de servicios</h3>"
+						+ "<table class='table table-bordered'><tr>"
 						+ "<th>FECHE</th>"
 						+ "<th>ID_USUARIO</th>"
 						+ "<th>ID_SERVICIO</th>"
@@ -153,7 +154,7 @@ public class PetiBuscarCrearServicios extends HttpServlet {
 					  //Obtenemos los valores de la consulta y creamos
 					  //nuestro objeto producto				
 						System.out.println("SERVICIO: "+rs.getString("DESCRIPCION"));
-						lista+="<option value='"+rs.getString("idORDEN_SERVICIO")+"'>"+rs.getString("idORDEN_SERVICIO")+"</option>";
+						lista+="<option value='"+rs.getString("idORDEN_SERVICIO")+"'>"+rs.getString("TIPO")+" - "+rs.getString("idORDEN_SERVICIO")+"</option>";
 		//	      s.setDane(rs.getInt("idprogramaUsuario"));
 		//	      s.setSede(rs.getString("Sede"));
 		//	      s.setDireccion(rs.getString("Direccion"));
