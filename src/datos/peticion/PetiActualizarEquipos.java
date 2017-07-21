@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datos.conexion.Procedimiento;
 import datos.programas.Rol;
+import datos.trabajo.Equipo;
 
 
 
@@ -52,23 +53,36 @@ public class PetiActualizarEquipos extends HttpServlet {
 	//datos del formulario
 	String mensaje="";
 	String actividad=request.getParameter("actividad");
-	Rol r = new Rol();
+	Equipo equi=new Equipo();
 	Procedimiento proce = new Procedimiento();
 	
 	if(actividad.compareToIgnoreCase("actualizar")==0){
 		    mensaje="actualizar";
-			r.setRol(request.getParameter("rolDatos"));
-			int iddd =Integer.parseInt(request.getParameter("idd"));
-			String dada = request.getParameter("rolDatos") ;
-			
+			equi.setPlaca(request.getParameter("idd"));
+		    equi.setTipoAire(request.getParameter("tipoDeAire2"));
+		    equi.setBtu(Integer.parseInt(request.getParameter("btu2")));
+			equi.setUbicacion(request.getParameter("ubicacion2"));
+			equi.setAmperaje(Integer.parseInt(request.getParameter("amperaje2")));
+			equi.setVoltaje(Integer.parseInt(request.getParameter("voltaje2")));
+			equi.setPrecionAlta(Integer.parseInt(request.getParameter("presionAlta2")));
+			equi.setPresionBaja(Integer.parseInt(request.getParameter("presionbaja2")));
+			equi.setRefrigerante(request.getParameter("Refrigerante2"));
+						
 			//fin datos del formulario
 			//conexion bd y procedimientos almacenados
 			
-			proce.setCall("{CALL actualizarRol( ?, ?)}");
+			proce.setCall("{CALL actualizarEquipo( ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 			proce.conexion(0);
 			try {
-				proce.cl.setInt(1, iddd);
-				proce.cl.setString(2, dada);
+				proce.cl.setString(1, equi.getPlaca());
+				proce.cl.setString(2, equi.getTipoAire());
+				proce.cl.setInt(3, equi.getBtu());
+				proce.cl.setString(4, equi.getUbicacion());
+				proce.cl.setInt(5, (int)equi.getAmperaje());
+				proce.cl.setInt(6, (int)equi.getVoltaje());
+				proce.cl.setInt(7, (int)equi.getPrecionAlta());
+				proce.cl.setInt(8, (int)equi.getPresionBaja());
+				proce.cl.setString(9, equi.getRefrigerante());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -77,7 +91,7 @@ public class PetiActualizarEquipos extends HttpServlet {
 	}else
 	if(actividad.compareToIgnoreCase("eliminar")==0){
 			mensaje="eliminar";
-			int iddd =Integer.parseInt(request.getParameter("idd"));
+			equi.setPlaca(request.getParameter("idd"));
 			String dada = request.getParameter("rolDatos") ;
 			
 			//fin datos del formulario
@@ -86,7 +100,7 @@ public class PetiActualizarEquipos extends HttpServlet {
 			proce.setCall("{CALL eliminarEquipo(?)}");
 			proce.conexion(0);
 			try {
-				proce.cl.setInt(1, iddd);
+				proce.cl.setString(1, equi.getPlaca());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,7 +123,7 @@ public class PetiActualizarEquipos extends HttpServlet {
 		 response.getWriter().write("No se "+mensaje+" los datos");
     }
 	
-	System.out.println(""+r.getRol());
+	System.out.println(""+equi.getPlaca());
 	}
 	
 

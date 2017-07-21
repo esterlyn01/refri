@@ -1365,15 +1365,15 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 				  			});
 		            break;
 			    	      case "actualizarEquipo":
-				   	          var placa1=$("#airPlaca"+id).val();
-						      var tipoDeAire1=$("#airtipodeaire"+id).val();
-						      var btu1=$("#airbtu"+id).val();
-						      var ubicacion1=$("#airubicacion"+id).val();
-						      var amperaje1=$("#airamperaje"+id).val();
-						      var voltaje1=$("#airvoltaje"+id).val();
-						      var presionAlta1=$("#airpresionalta"+id).val();
-						      var presionbaja1=$("#airpresionbaja"+id).val();
-						      var Refrigerante1=$("#airrefrigerante"+id).val();
+				   	          var placa1=$("#equipoAirPlaca"+id).val();
+						      var tipoDeAire1=$("#equipoAirtipodeaire"+id).val();
+						      var btu1=$("#equipoAirbtu"+id).val();
+						      var ubicacion1=$("#equipoAirubicacion"+id).val();
+						      var amperaje1=$("#equipoAiramperaje"+id).val();
+						      var voltaje1=$("#equipoAirvoltaje"+id).val();
+						      var presionAlta1=$("#equipoAirpresionalta"+id).val();
+						      var presionbaja1=$("#equipoAirpresionbaja"+id).val();
+						      var Refrigerante1=$("#equipoAirrefrigerante"+id).val();
 				  		     //var passs=$("#usuPass").val();
 				   	    	        
 				   	    	        console.log("datos");
@@ -1381,7 +1381,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 				   	  		    	$.ajax({
 				   	  				type: "POST",
 				   	  				url: 'PetiActualizarEquipos',
-				   	  				data:{idd: id, airPlaca2 : placa1, tipoDeAire2 : tipoDeAire1, btu2 : btu1, ubicacion2 : ubicacion1, amperaje2 : amperaje1, voltaje2 : voltaje1, presionAlta2 : presionAlta1, presionbaja2 : presionbaja1, Refrigerante2 : Refrigerante1} ,
+				   	  				data:{actividad : "actualizar", idd: id, airPlaca2 : placa1, tipoDeAire2 : tipoDeAire1, btu2 : btu1, ubicacion2 : ubicacion1, amperaje2 : amperaje1, voltaje2 : voltaje1, presionAlta2 : presionAlta1, presionbaja2 : presionbaja1, Refrigerante2 : Refrigerante1} ,
 				   	  				//	data:{rolDatos : datos, idd : id, actividad : "actualizar"} ,
 				   	  				beforeSend: function(){
 				   	  		          // 	$("#concentr").html("<div class='alert alert-warning'>Cargando.... Otra imagen</div>");
