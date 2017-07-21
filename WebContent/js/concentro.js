@@ -683,8 +683,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
     				//	$("#conte").html("Pailas esto no es Facil");
     					},
     			});		
-    				  
-
+    			
        }
        
        function vAsignarEqui(){

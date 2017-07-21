@@ -89,7 +89,7 @@ public class PetiBuscarUsuarioXCedu extends HttpServlet {
 				//String lista="<select class='form-control asisListaEstu' id='asisListaEstu' multiple='8'>";
 				String lista="<h3>Usuarios</h3>"
 						+ "<table class='table'>"
-						  +"<tr><th>ID</th>"
+						 // +"<tr><th>ID</th>"
 						  +"<th>Documento</th>"
 			   		      +"<th>Nombre</th>"
 			   		      +"<th>Telefono</th>"
@@ -116,7 +116,7 @@ public class PetiBuscarUsuarioXCedu extends HttpServlet {
 					 
 					System.out.println("IDUSUARIO: "+rs.getInt("ID_USUARIO"));
 					lista+="<tr class='"+colorr[color]+"'>"
-							  + "<td><input type='text' class='form-control asisFiltro' id='idusuario"+rs.getInt("ID_USUARIO")+"' value='"+rs.getInt("ID_USUARIO")+"'></td>"
+							 // + "<td><input type='text' class='form-control asisFiltro' id='idusuario"+rs.getInt("ID_USUARIO")+"' value='"+rs.getInt("ID_USUARIO")+"'></td>"
 							  + "<td><input type='text' class='form-control asisFiltro' id='documento"+rs.getInt("ID_USUARIO")+"' value='"+rs.getString("DOCUMENTO")+"'></td>"
 							  + "<td><input type='text' class='form-control asisFiltro' id='nombre"+rs.getInt("ID_USUARIO")+"' value='"+rs.getString("NOMBRE_USUARIO")+"'></td>"
 							  + "<td><input type='text' class='form-control asisFiltro' id='telefono"+rs.getInt("ID_USUARIO")+"' value='"+rs.getString("TELEFONO")+"'></td>"
