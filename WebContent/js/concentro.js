@@ -1322,7 +1322,7 @@ datosIniciales3("PetiBuscarCrearServicios","#asiPeticionDeServicios","3");
 			  			});
 	            break;
 		    	      case "actualizarServicio":
-			   	          var descripcion=$("#serDespcion1"+id).val();
+			   	          var descripcion=$("#serDespcion"+id).val();
 			  		      var tipo=$("#serTipo"+id).val();
 			  		     //var passs=$("#usuPass").val();
 			   	    	        
